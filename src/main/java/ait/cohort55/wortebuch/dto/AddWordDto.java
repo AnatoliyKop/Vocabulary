@@ -1,7 +1,9 @@
 package ait.cohort55.wortebuch.dto;
 
-import java.util.List;
+import lombok.Getter;
 
+import java.util.List;
+@Getter
 public class AddWordDto {
     private String original;
     private String translation;
