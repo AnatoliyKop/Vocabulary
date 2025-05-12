@@ -1,0 +1,7 @@
+package ait.cohort55.wortebuch.dao;
+
+import ait.cohort55.wortebuch.model.Word;
+import org.springframework.data.repository.CrudRepository;
+
+public interface WordRepository extends CrudRepository<Word, String> {
+}
