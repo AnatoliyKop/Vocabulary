@@ -1,6 +1,4 @@
 package ait.cohort55.wortebuch.controller;
-
-import ait.cohort55.wortebuch.dto.TrainingDto;
 import ait.cohort55.wortebuch.dto.WordDto;
 import ait.cohort55.wortebuch.service.WordService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +13,7 @@ public class WordController {
     private final WordService wordService;
 
     @PostMapping
-    public boolean addWord(@RequestBody WordDto wordDto) {
+    public WordDto  addWord(@RequestBody WordDto wordDto) {
         return wordService.addWord(wordDto);
     }
 
@@ -29,9 +27,9 @@ public class WordController {
         return wordService.findAllWords() ;
     }
 
-    @PatchMapping("/{word}")
-    public WordDto updateWord(@PathVariable String word,@RequestBody WordDto wordDto) {
-        return wordService.updateWord(word,wordDto) ;
+    @PatchMapping
+    public WordDto updateWord(@RequestBody WordDto wordDto) {
+        return wordService.updateWord(wordDto) ;
     }
 
     @DeleteMapping("/{word}")
@@ -39,10 +37,12 @@ public class WordController {
         return wordService.deleteWord(wordDto) ;
     }
 
-    @PostMapping("training")
-    public void training(@RequestBody TrainingDto trainingDto) {
-        wordService.training(trainingDto);
+    @PostMapping("/training")
+    public List<WordDto> training(@RequestBody List<WordDto> wordsDto) {
+        return wordService.training(wordsDto);
 
     }
+    @PatchMapping("/training/result")
+    public void updateAfterTraining(@RequestBody List<WordDto> wordsDto) {}
 }
 
